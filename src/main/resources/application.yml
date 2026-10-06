@@ -1,0 +1,35 @@
+server:
+  servlet:
+    context-path: /hsh
+  port: 8080
+
+spring:
+  profiles:
+    active: dev # 激活 dev 环境
+
+mybatis-plus:
+  configuration:
+    #MyBatis配置开启驼峰功能
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #为MyBatis引用的实体类自定义别名
+    type-aliases-package: com.hsh.hsh.entity
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.hsh.hsh.ctrl
+
+# knife4j的增强配置
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+    swagger-model-name: 实体类列表
